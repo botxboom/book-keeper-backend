@@ -46,12 +46,18 @@ const bookResolvers = {
     },
 
     deleteBook: async (_, { id }, { models }) => {
-      const { Book, Author } = models;
+      const { Book } = models;
 
       const book = await Book.findByPk(id);
       if (!book) throw new Error("Book not found");
 
-      await Review.deleteMany({ bookId: id.toString() });
+      await Review.deleteMany({ bookId: id.toString() })
+        .then(() => {
+          console.log("Reviews deleted successfully");
+        })
+        .catch((error) => {
+          console.error("Error deleting reviews:", error);
+        });
 
       await book.destroy();
 
