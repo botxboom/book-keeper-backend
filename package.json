@@ -5,23 +5,28 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "Gulshan",
   "license": "ISC",
   "dependencies": {
     "@aws-sdk/client-s3": "^3.850.0",
     "@aws-sdk/s3-request-presigner": "^3.850.0",
-    "apollo-server": "^3.13.0",
     "dotenv": "^17.2.0",
     "graphql": "^16.11.0",
     "mongoose": "^8.16.4",
     "pg": "^8.16.3",
     "pg-hstore": "^2.3.4",
-    "sequelize": "^6.37.7"
+    "sequelize-mock": "^0.10.2"
   },
   "devDependencies": {
+    "apollo-server": "^3.13.0",
+    "apollo-server-testing": "^2.25.3",
     "eslint": "^9.31.0",
-    "nodemon": "^3.1.10"
+    "jest": "^30.0.5",
+    "mongodb-memory-server": "^10.1.4",
+    "nodemon": "^3.1.10",
+    "sequelize": "^6.37.7",
+    "sqlite3": "^5.1.7"
   }
 }
