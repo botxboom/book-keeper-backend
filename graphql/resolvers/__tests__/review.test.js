@@ -1,13 +1,13 @@
 const mongoose = require("mongoose");
 const { ApolloServer } = require("apollo-server");
 const { MongoMemoryServer } = require("mongodb-memory-server");
-const reviewResolvers = require("./reviewResolvers");
-const typeDefs = require("../schema");
+const reviewResolvers = require("../reviewResolvers");
+const typeDefs = require("../../schema");
 
 let mongod;
 let server;
 
-jest.mock("../../db/postgres", () => {
+jest.mock("../../../db/postgres", () => {
   const SequelizeMock = require("sequelize-mock");
   return new SequelizeMock(); // returns a mocked sequelize instance
 });
@@ -72,7 +72,7 @@ describe("Review Resolvers", () => {
     );
 
     const validId = new mongoose.Types.ObjectId().toString();
-    await require("../../models").Review.create({
+    await require("../../../models").Review.create({
       _id: validId,
       bookId: "fake-book-id",
       user: "Test User",

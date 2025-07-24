@@ -17,6 +17,14 @@ const bookResolvers = {
         order: [["published_date", "DESC"]],
       });
     },
+
+    book: async (_, { id }, { models }) => {
+      const book = await models.Book.findByPk(id, {
+        include: [Author],
+      });
+      if (!book) throw new Error("Book not found");
+      return book;
+    },
   },
 
   Mutation: {

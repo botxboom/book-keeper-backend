@@ -31,6 +31,7 @@ const typeDefs = gql`
 
   type Query {
     books(filter: String, page: Int, limit: Int): [Book]
+    book(id: ID!): Book
     authors(filter: String, page: Int, limit: Int): [Author]
     reviewsByBook(bookId: String!): [Review]
   }

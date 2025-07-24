@@ -1,14 +1,14 @@
 const { createTestClient } = require("apollo-server-testing");
 const { ApolloServer } = require("apollo-server");
-const typeDefs = require("../schema");
+const typeDefs = require("../../schema");
 const { Sequelize, DataTypes } = require("sequelize");
-const bookResolvers = require("./bookResolvers");
-const authorResolvers = require("./authorResolvers");
+const bookResolvers = require("../bookResolvers");
+const authorResolvers = require("../authorResolvers");
 
 // In-memory Sequelize setup
 const sequelize = new Sequelize("sqlite::memory:");
 
-jest.mock("../../db/postgres", () => {
+jest.mock("../../../db/postgres", () => {
   const SequelizeMock = require("sequelize-mock");
   return new SequelizeMock(); // returns a mocked sequelize instance
 });
