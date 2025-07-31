@@ -43,13 +43,19 @@ const bookResolvers = {
 
     updateBook: async (
       _,
-      { id, title, description, published_date, cover_image },
+      { id, title, description, published_date, cover_image, author_id },
       { models }
     ) => {
       const book = await models.Book.findByPk(id);
       if (!book) throw new Error("Book not found");
 
-      await book.update({ title, description, published_date, cover_image });
+      await book.update({
+        title,
+        description,
+        published_date,
+        cover_image,
+        author_id,
+      });
       return book;
     },
 

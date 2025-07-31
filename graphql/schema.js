@@ -32,6 +32,7 @@ const typeDefs = gql`
   type Query {
     books(filter: String, page: Int, limit: Int): [Book]
     book(id: ID!): Book
+    author(id: ID!): Author
     authors(filter: String, page: Int, limit: Int): [Author]
     reviewsByBook(bookId: String!): [Review]
   }
@@ -51,6 +52,7 @@ const typeDefs = gql`
       description: String
       published_date: String
       cover_image: String
+      author_id: ID
     ): Book
 
     deleteBook(id: ID!): Boolean
